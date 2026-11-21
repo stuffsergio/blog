@@ -31,7 +31,7 @@ export async function obtenerTodosBlogs(req, res) {
 
 export async function obtenerBlogPorId(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
 
     const blog = await getBlogById(id);
 
@@ -51,15 +51,17 @@ export async function obtenerBlogPorId(req, res) {
 
 export async function obtenerBlogPorTitulo(req, res) {
   try {
-    const tituloParcialOEntero = req.title;
+    const { tituloParcialOEntero } = req.body;
 
-    const blog = await getBlogByTitle(title);
+    const blog = await getBlogByTitle(tituloParcialOEntero);
 
     if (blog.length == 0) {
-      return res
-        .status(404)
-        .json({ message: `No se encuentra el blog con el título: ${title}` });
+      return res.status(404).json({
+        message: `No se encuentra el blog con el título: ${tituloParcialOEntero}`,
+      });
     }
+
+    return res.status(200).json(blog);
   } catch (err) {
     return res
       .status(400)
@@ -69,12 +71,12 @@ export async function obtenerBlogPorTitulo(req, res) {
 
 export async function crearBlog(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { title, subtitle, body, resume, image, status } = req.body;
 
     const blogEncontrado = await getBlogById(id);
 
-    if (blogEncontrado.length == 0) {
+    if (blogEncontrado) {
       return res
         .status(404)
         .json({ message: "Ya existe un blog con esos datos" });
@@ -91,6 +93,7 @@ export async function crearBlog(req, res) {
 
     return res.status(200).json(blog);
   } catch (err) {
+    console.log("Error: ", err);
     return res
       .status(400)
       .json({ message: "Error en el servidor / consulta", error: err });
@@ -99,7 +102,7 @@ export async function crearBlog(req, res) {
 
 export async function actualizarBlog(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { title, subtitle, body, resume, image, status } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -129,7 +132,7 @@ export async function actualizarBlog(req, res) {
 
 export async function actualizarBlogPorTitulo(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { title } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -152,7 +155,7 @@ export async function actualizarBlogPorTitulo(req, res) {
 
 export async function actualizarBlogPorSubtitulo(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { subtitle } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -175,7 +178,7 @@ export async function actualizarBlogPorSubtitulo(req, res) {
 
 export async function actualizarBlogPorCuerpo(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { body } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -198,7 +201,7 @@ export async function actualizarBlogPorCuerpo(req, res) {
 
 export async function actualizarBlogPorResumen(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { resume } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -221,7 +224,7 @@ export async function actualizarBlogPorResumen(req, res) {
 
 export async function actualizarBlogPorImagen(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { image } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -244,7 +247,7 @@ export async function actualizarBlogPorImagen(req, res) {
 
 export async function actualizarBlogPorEstado(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
     const { status } = req.body;
 
     const blogEncontrado = await getBlogById(id);
@@ -267,7 +270,7 @@ export async function actualizarBlogPorEstado(req, res) {
 
 export async function eliminarBlog(req, res) {
   try {
-    const id = req.id;
+    const id = req.params.id;
 
     const blogEncontrado = await getBlogById(id);
 

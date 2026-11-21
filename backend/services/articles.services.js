@@ -17,7 +17,7 @@ export async function getBlogById(id) {
     [id],
   );
 
-  return rows;
+  return rows[0];
 }
 
 export async function getBlogByTitle({ title }) {
