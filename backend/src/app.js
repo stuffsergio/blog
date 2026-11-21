@@ -2,6 +2,7 @@ import dotenv from "dotenv/config";
 import express from "express";
 import cors from "cors";
 import articlesRoutes from "../routes/articles.routes.js";
+import etiquetasRoutes from "../routes/etiquetas.routes.js";
 
 const app = express();
 
@@ -12,5 +13,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/articulos", articlesRoutes);
+app.use("/api/etiquetas", etiquetasRoutes);
 
 export default app;
