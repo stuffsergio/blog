@@ -151,7 +151,7 @@ export async function updateStatus(id, { status }) {
 export async function deleteBlog(id) {
   const [rows] = await pool.query(
     `
-      delete * from articulo where id = ?
+      delete from articulo where id = ?
     `,
     [id],
   );
