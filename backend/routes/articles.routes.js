@@ -18,8 +18,8 @@ const router = express.Router();
 
 // get
 router.get("/todos", obtenerTodosBlogs);
-router.get("/:id", obtenerBlogPorId);
 router.get("/titulo", obtenerBlogPorTitulo);
+router.get("/:id", obtenerBlogPorId);
 
 // post
 router.post("/", crearBlog);

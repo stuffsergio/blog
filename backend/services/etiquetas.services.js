@@ -16,7 +16,7 @@ export async function getTagById(id) {
     [id],
   );
 
-  return rows;
+  return rows[0];
 }
 
 export async function getTagByName({ nombre }) {
@@ -27,7 +27,7 @@ export async function getTagByName({ nombre }) {
     [nombre],
   );
 
-  return rows;
+  return rows[0];
 }
 
 export async function createTag({ nombre }) {

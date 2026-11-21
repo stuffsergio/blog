@@ -12,8 +12,8 @@ const router = express.Router();
 
 // get
 router.get("/", obtenerTodasEtiquetas);
-router.get("/:id", obtenerEtiquetaPorId);
 router.get("/nombre", obtenerEtiquetaPorNombre);
+router.get("/:id", obtenerEtiquetaPorId);
 
 // post
 router.post("/", crearEtiqueta);
