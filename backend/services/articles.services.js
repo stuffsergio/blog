@@ -38,27 +38,172 @@ export async function createBlog({
   subtitle,
   body,
   resume,
-  imagen,
-  estado,
-}) {}
+  image,
+  status,
+}) {
+  const [rows] = await pool.query(
+    `
+      insert into articulo (titulo, subtitulo, cuerpo, resumen, imagen, estado)
+      values (?, ?, ?, ?, ?, ?)
+    `,
+    [title, subtitle, body, resume, image, status],
+  );
+
+  return rows;
+}
 
 // ACTUALIZAR DATOS
 export async function updateBlog(
   id,
-  { title, subtitle, body, resume, imagen, estado },
-) {}
+  { title, subtitle, body, resume, image, status },
+) {
+  const blog = await getBlogById(id);
 
-export async function updateTitle(id, { title }) {}
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
 
-export async function updateTitle(id, { subtitle }) {}
+  const [rows] = await pool.query(
+    `
+      update articulo
+      set titulo = ?, subtitulo = ?, cuerpo = ?, resumen = ?, imagen = ?, estado = ?
+      where id = ?
+    `,
+    [title, subtitle, body, resume, image, status, id],
+  );
 
-export async function updateBody(id, { body }) {}
+  return rows;
+}
 
-export async function updateResume(id, { resume }) {}
+export async function updateTitle(id, { title }) {
+  const blog = await getBlogById(id);
 
-export async function updateImage(id, { image }) {}
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
 
-export async function updateStatus(id, { status }) {}
+  const [rows] = pool.query(
+    `
+      update articulo
+      set titulo = ?
+      where id = ?
+    `,
+    [title, id],
+  );
+
+  return rows;
+}
+
+export async function updateTitle(id, { subtitle }) {
+  const blog = await getBlogById(id);
+
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
+
+  const [rows] = pool.query(
+    `
+      update articulo
+      set subtitulo = ?
+      where id = ?
+    `,
+    [subtitle, id],
+  );
+
+  return rows;
+}
+
+export async function updateBody(id, { body }) {
+  const blog = await getBlogById(id);
+
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
+
+  const [rows] = pool.query(
+    `
+      update articulo
+      set cuerpo = ?
+      where id = ?
+    `,
+    [body, id],
+  );
+
+  return rows;
+}
+
+export async function updateResume(id, { resume }) {
+  const blog = await getBlogById(id);
+
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
+
+  const [rows] = pool.query(
+    `
+      update articulo
+      set resumen = ?
+      where id = ?
+    `,
+    [resume, id],
+  );
+
+  return rows;
+}
+
+export async function updateImage(id, { image }) {
+  const blog = await getBlogById(id);
+
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
+
+  const [rows] = pool.query(
+    `
+      update articulo
+      set imagen = ?
+      where id = ?
+    `,
+    [image, id],
+  );
+
+  return rows;
+}
+
+export async function updateStatus(id, { status }) {
+  const blog = await getBlogById(id);
+
+  if (blog.length != 0) {
+    console.log("Este blog ya existe - id: ", id);
+    return;
+  }
+
+  const [rows] = pool.query(
+    `
+      update articulo
+      set estado = ?
+      where id = ?
+    `,
+    [status, id],
+  );
+
+  return rows;
+}
 
 // ELIMINAR DATOS
-export async function deleteBlog(id) {}
+export async function deleteBlog(id) {
+  const [rows] = await pool.query(
+    `
+      delete * from articulo where id = ?
+    `,
+    [id],
+  );
+
+  return rows;
+}
