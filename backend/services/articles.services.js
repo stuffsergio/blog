@@ -57,13 +57,6 @@ export async function updateBlog(
   id,
   { title, subtitle, body, resume, image, status },
 ) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
   const [rows] = await pool.query(
     `
       update articulo
@@ -77,13 +70,6 @@ export async function updateBlog(
 }
 
 export async function updateTitle(id, { title }) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
   const [rows] = pool.query(
     `
       update articulo
@@ -96,14 +82,7 @@ export async function updateTitle(id, { title }) {
   return rows;
 }
 
-export async function updateTitle(id, { subtitle }) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
+export async function updateSubtitle(id, { subtitle }) {
   const [rows] = pool.query(
     `
       update articulo
@@ -117,13 +96,6 @@ export async function updateTitle(id, { subtitle }) {
 }
 
 export async function updateBody(id, { body }) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
   const [rows] = pool.query(
     `
       update articulo
@@ -137,13 +109,6 @@ export async function updateBody(id, { body }) {
 }
 
 export async function updateResume(id, { resume }) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
   const [rows] = pool.query(
     `
       update articulo
@@ -157,13 +122,6 @@ export async function updateResume(id, { resume }) {
 }
 
 export async function updateImage(id, { image }) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
   const [rows] = pool.query(
     `
       update articulo
@@ -177,13 +135,6 @@ export async function updateImage(id, { image }) {
 }
 
 export async function updateStatus(id, { status }) {
-  const blog = await getBlogById(id);
-
-  if (blog.length != 0) {
-    console.log("Este blog ya existe - id: ", id);
-    return;
-  }
-
   const [rows] = pool.query(
     `
       update articulo
