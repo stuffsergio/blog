@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import articlesRoutes from "../routes/articles.routes.js";
 import etiquetasRoutes from "../routes/etiquetas.routes.js";
+import articulosEtiquetasRoutes from "../routes/articles_etiquetas.routes.js";
 import { notFound } from "../middlewares/notFound.js";
 import { errorHandler } from "../middlewares/error.js";
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/articulos", articlesRoutes);
 app.use("/api/etiquetas", etiquetasRoutes);
+app.use("/api/art_eti", articulosEtiquetasRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

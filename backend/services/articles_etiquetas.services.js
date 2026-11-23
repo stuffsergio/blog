@@ -1,6 +1,6 @@
 import { pool } from "../db/connection.js";
 
-export async function getTagsByBlog(articuloId) {
+export async function getTagsByArticle(articuloId) {
   const [rows] = await pool.query(
     `
             select e.nombre
@@ -14,7 +14,7 @@ export async function getTagsByBlog(articuloId) {
   return rows;
 }
 
-export async function getBlogsByTag(etiquetaId) {
+export async function getArticleByTag(etiquetaId) {
   const [rows] = await pool.query(
     `
             select a.titulo, a.subtitulo, a.cuerpo, a.resumen, a.imagen, a.estado
@@ -28,7 +28,7 @@ export async function getBlogsByTag(etiquetaId) {
   return rows;
 }
 
-export async function createRelationBlogTag(articuloId, etiquetaId) {
+export async function createRelationArticleTag(articuloId, etiquetaId) {
   const [rows] = await pool.query(
     `
             insert into articulo_etiqueta (articulo_id, etiqueta_id) values (?, ?)
@@ -39,7 +39,7 @@ export async function createRelationBlogTag(articuloId, etiquetaId) {
   return rows;
 }
 
-export async function deleteRelationBlogTag(articuloId, etiquetaId) {
+export async function deleteRelationArticleTag(articuloId, etiquetaId) {
   const [rows] = await pool.query(
     `
             delete from articulo_etiqueta where articulo_id = ? and etiqueta_id = ?
