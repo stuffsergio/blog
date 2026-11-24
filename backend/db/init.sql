@@ -1,7 +1,7 @@
 create table articulo (
     id int primary key auto_increment,
-    title varchar(200) not null,
-    subtitlo varchar(255) not null,
+    titulo varchar(200) not null,
+    subtitulo varchar(255) not null,
     cuerpo long not null,
     resumen varchar(255) not null,
     imagen varchar(255),
@@ -11,7 +11,7 @@ create table articulo (
 
 create table etiquetas (
     id int primary key auto_increment,
-    title varchar(50),
+    titulo varchar(50),
     created_at timestamp default current_timestamp
 )
 
