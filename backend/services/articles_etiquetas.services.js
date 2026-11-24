@@ -1,5 +1,12 @@
 import { pool } from "../db/connection.js";
 
+export async function getAllInfo() {
+  const [rows] = await pool.query(`
+      select * from articulo_etiqueta
+    `);
+  return rows;
+}
+
 export async function getTagsByArticle(articuloId) {
   const [rows] = await pool.query(
     `
@@ -28,12 +35,12 @@ export async function getArticleByTag(etiquetaId) {
   return rows;
 }
 
-export async function createRelationArticleTag(articuloId, etiquetaId) {
+export async function createRelationArticleTag({ articleId, tagId }) {
   const [rows] = await pool.query(
     `
             insert into articulo_etiqueta (articulo_id, etiqueta_id) values (?, ?)
         `,
-    [articuloId, etiquetaId],
+    [articleId, tagId],
   );
 
   return rows;
