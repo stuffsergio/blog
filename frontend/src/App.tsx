@@ -1,5 +1,6 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
+import Form from "./components/Form";
 
 function App() {
   // Lógica de detección de teclas
@@ -11,10 +12,12 @@ function App() {
         <div>
           <NavBar />
         </div>
-        <div>
-          <h1 className="">Sistema Gestor de Blog</h1>
+        <div className="flex flex-col justify-center items-center py-10">
+          <h1 className="text-xl font-bold">Sistema Gestor de Blog</h1>
         </div>
-        <div></div>
+        <div>
+          <Form />
+        </div>
       </div>
     </>
   );

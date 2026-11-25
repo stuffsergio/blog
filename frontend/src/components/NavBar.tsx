@@ -13,9 +13,9 @@ export default function NavBar() {
       <AnimatePresence>
         {openMenu && (
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 1 }}
             className="absolute bottom-18 right-0"
           >
             <ul>
@@ -55,9 +55,9 @@ export default function NavBar() {
               {inputActive ? (
                 <AnimatePresence>
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
                   >
                     <X size={14} />
                   </motion.div>
@@ -65,9 +65,9 @@ export default function NavBar() {
               ) : (
                 <AnimatePresence>
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
                   >
                     <p className="opacity-60">Ctrl K</p>
                   </motion.div>
