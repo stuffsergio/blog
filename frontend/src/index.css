@@ -1,13 +1,36 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "HovesRegular";
+  src: url("../public/fonts/TT\ Hoves\ Pro\ Trial\ Regular.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "HovesMedium";
+  src: url("../public/fonts/TT\ Hoves\ Pro\ Trial\ Medium.woff2")
+    format("woof2");
+}
+@font-face {
+  font-family: "HovesBold";
+  src: url("../public/fonts/TT\ Hoves\ Pro\ Trial\ Bold.woff2") format("woof2");
+}
+
 :root {
   --accent-color: #ffda7d;
   --secondary-color: #fff1ce;
+  --gray-900: #d8d8d8;
   --gray-600: #e7e7e7;
   --gray-300: #f3f3f3;
   --shade-500: #262626;
+  --shade-800: #0d0d0d;
 
   /*
     --accent-color: #f3f713;
   */
+}
+
+body {
+  font-family: "HovesRegular", sans-serif;
+  background-color: var(--shade-800);
+  color: var(--gray-300);
 }

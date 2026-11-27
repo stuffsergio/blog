@@ -8,7 +8,7 @@ export default function NavBar() {
   const [inputActive, setInputActive] = useState(false);
 
   return (
-    <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+    <div className="fixed bottom-12 left-1/2 -translate-x-1/2">
       {/* Menú de opciones flotante por encima del navbar */}
       <AnimatePresence>
         {openMenu && (
@@ -29,7 +29,7 @@ export default function NavBar() {
         )}
       </AnimatePresence>
 
-      <nav className="flex flex-row justify-center items-center gap-3 px-4 py-2 rounded-full border border-gray-200 shadow-md">
+      <nav className="flex flex-row justify-center items-center gap-3 px-4 py-2 rounded-full border border-gray-200 shadow-sm shadow-white bg-white backdrop-blur-xl">
         <ul>
           <Link to={"/"}>
             <Home size={18} />
