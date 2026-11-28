@@ -8,12 +8,9 @@ function App() {
 
   return (
     <>
-      <div className="">
+      <div className="h-screen py-6">
         <div>
           <NavBar />
-        </div>
-        <div className="flex flex-col justify-center items-center py-10">
-          <h1 className="text-xl font-bold">Sistema Gestor de Blog</h1>
         </div>
         <div>
           <Form />

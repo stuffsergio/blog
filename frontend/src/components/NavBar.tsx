@@ -6,9 +6,10 @@ import { AnimatePresence, motion } from "motion/react";
 export default function NavBar() {
   const [openMenu, setOpenMenu] = useState(false);
   const [inputActive, setInputActive] = useState(false);
+  const [busqueda, setBusqueda] = useState("");
 
   return (
-    <div className="fixed bottom-12 left-1/2 -translate-x-1/2">
+    <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-10 text-(--shade-800)">
       {/* Menú de opciones flotante por encima del navbar */}
       <AnimatePresence>
         {openMenu && (
@@ -36,7 +37,7 @@ export default function NavBar() {
           </Link>
         </ul>
         <ul>
-          <div className="flex flex-row justify-between items-center gap-2 px-2 py-2 bg-gray-300/70 rounded-full">
+          <div className="flex flex-row justify-between items-center gap-2 px-2 py-2 bg-(--gray-300) rounded-full">
             <label htmlFor="search">
               <Search size={18} />
             </label>
@@ -47,6 +48,8 @@ export default function NavBar() {
               autoComplete="off"
               onFocus={() => setInputActive(true)}
               onBlur={() => setInputActive(false)}
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
               className="px-0 text-sm focus:outline-none"
             />
             {/* onFocus: evento que se dispara si el usuario hace click dentro del input / llega a él mediante tabs */}
@@ -54,13 +57,14 @@ export default function NavBar() {
             <div className="flex justify-end text-xs w-8 mr-2">
               {inputActive ? (
                 <AnimatePresence>
-                  <motion.div
+                  <motion.button
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
+                    onClick={() => setBusqueda("")}
                   >
                     <X size={14} />
-                  </motion.div>
+                  </motion.button>
                 </AnimatePresence>
               ) : (
                 <AnimatePresence>
